@@ -1,29 +1,33 @@
 import React from "react";
+import { Rating } from "react-simple-star-rating";
+import { Link } from "react-router-dom";
 
-import { Rating } from 'react-simple-star-rating';
-
-const MovieCard = ({ movie }) => {
+const MovieCard = ({ movie,props }) => {
   return (
     <div>
-      <div class="movie_card" id="bright"  >
-        <div class="info_section">
-          <div class="movie_header">
-            <img class="locandina" src={movie.img} alt=""/>
-            <h1 >{movie.title}</h1>
-            <Rating  ratingValue={movie.rate} /* Rating Props */ />
+      <div className="movie_card" id="bright">
+        <div className="info_section">
+          <div className="movie_header">
+            <img className="locandina" src={movie.img} alt="" />
+            <h2>{movie.title}</h2>
+            <Rating ratingValue={movie.rate} /* Rating Props */ />
             <h4>{movie.date}</h4>
-            <span class="minutes">{movie.duration}</span>
-            <p class="type">{movie.genre}</p>
-          </div>
-          <div class="movie_desc">
-            <p class="text">{movie.description}</p>
+            <span className="minutes">{movie.duration}</span>
+            <p className="type">{movie.genre}</p>
+
+            <div className="movie_desc">
+            <p className="text">
+            <Link to={`/descrption/${movie.id}` }>  <button id="button">  show more  </button>  </Link>
+            <br/>
+              <br/>
+              </p>
+            </div>
           </div>
         </div>
-        <div class="blur_back  "></div>
+        <div className="blur_back"></div>
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default MovieCard
-
+export default MovieCard;
